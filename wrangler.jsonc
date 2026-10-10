@@ -1,0 +1,8 @@
+{
+  // Configuración de Cloudflare Workers: web estática, sin código de servidor.
+  "name": "jorgeorsaca",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./public"
+  }
+}
