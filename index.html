@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dulce Azul · Postres caseros</title>
+  <meta name="description" content="Postres caseros hechos con amor: tortas, cheesecakes, alfajores y más. Haz tu pedido por WhatsApp.">
+  <meta name="theme-color" content="#1e4fd8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul-900: #0b1f4d;
+      --azul-700: #1e4fd8;
+      --azul-500: #3b82f6;
+      --azul-200: #bfdbfe;
+      --azul-100: #e0edff;
+      --azul-50:  #f3f8ff;
+      --texto:    #1b2540;
+      --suave:    #5a6788;
+      --blanco:   #ffffff;
+      --wa:       #25d366;
+      --wa-osc:   #1da851;
+      --radio:    22px;
+      --sombra:   0 12px 30px rgba(30, 79, 216, .14);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Nunito", system-ui, sans-serif;
+      color: var(--texto);
+      background: var(--azul-50);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.15; color: var(--azul-900); }
+
+    .contenedor { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+    /* ---------- Barra superior ---------- */
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(243, 248, 255, .85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--azul-100);
+    }
+    .nav .contenedor { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .marca { display: flex; align-items: center; gap: 8px; font-family: "Fraunces", serif; font-weight: 700; font-size: 1.25rem; color: var(--azul-900); }
+    .marca span { font-size: 1.5rem; }
+    .nav-links { display: none; gap: 24px; font-weight: 600; color: var(--suave); }
+    .nav-links a:hover { color: var(--azul-700); }
+
+    /* ---------- Botones ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 24px; border-radius: 999px;
+      font-weight: 700; font-size: 1rem;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      min-height: 48px;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-wa { background: var(--wa); color: #fff; box-shadow: 0 8px 20px rgba(37, 211, 102, .35); }
+    .btn-wa:hover { background: var(--wa-osc); }
+    .btn-sec { background: var(--blanco); color: var(--azul-700); border: 2px solid var(--azul-200); }
+    .btn-sec:hover { border-color: var(--azul-500); }
+    .btn-mini { padding: 8px 16px; min-height: 40px; font-size: .9rem; }
+    .btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, var(--azul-700) 0%, var(--azul-500) 60%, #60a5fa 100%);
+      color: var(--blanco);
+      padding: 56px 0 88px;
+    }
+    .hero::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 48px;
+      background: var(--azul-50);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+    .hero .contenedor { position: relative; z-index: 1; display: grid; gap: 32px; }
+    .etiqueta {
+      display: inline-block; padding: 6px 14px; border-radius: 999px;
+      background: rgba(255, 255, 255, .18); font-weight: 700; font-size: .85rem; letter-spacing: .3px;
+    }
+    .hero h1 { color: var(--blanco); font-size: clamp(2.1rem, 8vw, 3.6rem); margin: 14px 0 12px; }
+    .hero p { font-size: 1.1rem; opacity: .95; max-width: 520px; }
+    .hero-acciones { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+    .hero-acciones .btn-sec { background: transparent; color: var(--blanco); border-color: rgba(255, 255, 255, .6); }
+
+    .hero-visual {
+      justify-self: center; position: relative;
+      width: min(300px, 80vw); aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ffffff 0%, var(--azul-100) 55%, var(--azul-200) 100%);
+      display: grid; place-items: center;
+      font-size: clamp(7rem, 32vw, 9.5rem);
+      box-shadow: 0 25px 60px rgba(11, 31, 77, .35);
+    }
+    .burbuja {
+      position: absolute; background: var(--blanco); color: var(--azul-900);
+      border-radius: 16px; padding: 8px 12px; font-size: .85rem; font-weight: 700;
+      box-shadow: var(--sombra); white-space: nowrap;
+    }
+    .burbuja.b1 { top: 8%; left: -6%; }
+    .burbuja.b2 { bottom: 10%; right: -6%; }
+
+    /* ---------- Secciones ---------- */
+    section { padding: 64px 0; }
+    .titulo-sec { text-align: center; margin-bottom: 36px; }
+    .titulo-sec h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
+    .titulo-sec p { color: var(--suave); margin-top: 8px; }
+
+    /* Beneficios */
+    .beneficios { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); }
+    .beneficio {
+      background: var(--blanco); border-radius: var(--radio); padding: 20px 16px; text-align: center;
+      box-shadow: 0 4px 14px rgba(30, 79, 216, .06);
+    }
+    .beneficio .ico { font-size: 2rem; }
+    .beneficio h3 { font-family: "Nunito", sans-serif; font-size: 1rem; margin-top: 6px; }
+    .beneficio p { font-size: .88rem; color: var(--suave); }
+
+    /* Menú de postres */
+    .grid-postres { display: grid; gap: 20px; }
+    .postre {
+      background: var(--blanco); border-radius: var(--radio); overflow: hidden;
+      box-shadow: var(--sombra); display: flex; flex-direction: column;
+      transition: transform .2s ease;
+    }
+    .postre:hover { transform: translateY(-4px); }
+    .postre-img {
+      height: 170px; display: grid; place-items: center; font-size: 5rem;
+      background: linear-gradient(135deg, var(--azul-100), var(--azul-200));
+    }
+    .postre-cuerpo { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .postre-cuerpo h3 { font-size: 1.3rem; }
+    .postre-cuerpo p { color: var(--suave); font-size: .95rem; flex: 1; }
+    .postre-pie { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 6px; }
+    .precio { font-weight: 700; font-size: 1.15rem; color: var(--azul-700); }
+    .precio small { font-weight: 600; color: var(--suave); font-size: .8rem; }
+
+    /* Cómo pedir */
+    .pasos { display: grid; gap: 16px; counter-reset: paso; }
+    .paso {
+      position: relative; background: var(--blanco); border-radius: var(--radio);
+      padding: 22px 20px 22px 76px; box-shadow: 0 4px 14px rgba(30, 79, 216, .06);
+    }
+    .paso::before {
+      counter-increment: paso; content: counter(paso);
+      position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--azul-700); color: #fff; font-weight: 700;
+      display: grid; place-items: center;
+    }
+    .paso h3 { font-family: "Nunito", sans-serif; font-size: 1.05rem; }
+    .paso p { color: var(--suave); font-size: .93rem; }
+
+    /* Testimonios */
+    .testimonios { display: grid; gap: 16px; }
+    .testimonio { background: var(--blanco); border-radius: var(--radio); padding: 22px; box-shadow: 0 4px 14px rgba(30, 79, 216, .06); }
+    .estrellas { color: #f5b301; letter-spacing: 2px; }
+    .testimonio p { margin: 8px 0 12px; }
+    .testimonio strong { color: var(--azul-900); }
+
+    /* CTA final */
+    .cta {
+      background: linear-gradient(135deg, var(--azul-900), var(--azul-700));
+      color: #fff; border-radius: 28px; padding: 40px 24px; text-align: center;
+    }
+    .cta h2 { color: #fff; font-size: clamp(1.7rem, 6vw, 2.4rem); }
+    .cta p { opacity: .9; margin: 10px auto 24px; max-width: 460px; }
+
+    /* Footer */
+    footer { padding: 32px 0 110px; text-align: center; color: var(--suave); font-size: .9rem; }
+    footer .marca { justify-content: center; margin-bottom: 8px; }
+    footer a { color: var(--azul-700); font-weight: 700; }
+
+    /* Botón flotante de WhatsApp */
+    .wa-flotante {
+      position: fixed; right: 16px; bottom: 16px; z-index: 50;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--wa); color: #fff; display: grid; place-items: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+      animation: latido 2.4s ease-in-out infinite;
+    }
+    .wa-flotante svg { width: 32px; height: 32px; }
+    .wa-flotante:hover { background: var(--wa-osc); }
+    @keyframes latido {
+      0%, 100% { box-shadow: 0 10px 25px rgba(0, 0, 0, .25), 0 0 0 0 rgba(37, 211, 102, .5); }
+      50%      { box-shadow: 0 10px 25px rgba(0, 0, 0, .25), 0 0 0 14px rgba(37, 211, 102, 0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .wa-flotante { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ---------- Tablet y escritorio ---------- */
+    @media (min-width: 640px) {
+      .hero-acciones { flex-direction: row; }
+      .beneficios { grid-template-columns: repeat(4, 1fr); }
+      .grid-postres { grid-template-columns: repeat(2, 1fr); }
+      .testimonios { grid-template-columns: repeat(3, 1fr); }
+      .pasos { grid-template-columns: repeat(3, 1fr); }
+      .paso { padding: 72px 20px 22px; text-align: center; }
+      .paso::before { left: 50%; top: 20px; transform: translateX(-50%); }
+    }
+    @media (min-width: 900px) {
+      .nav-links { display: flex; }
+      .hero { padding: 80px 0 120px; }
+      .hero .contenedor { grid-template-columns: 1.2fr 1fr; align-items: center; }
+      .grid-postres { grid-template-columns: repeat(3, 1fr); }
+      .cta { padding: 56px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Icono de WhatsApp reutilizable -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ico-wa" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.48.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35ZM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.89.99 6.67 2.77a9.37 9.37 0 0 1 2.76 6.68c0 5.2-4.24 9.43-9.45 9.43Zm8.04-17.47A11.3 11.3 0 0 0 12.05.7C5.78.7.68 5.8.68 12.06c0 2 .52 3.96 1.52 5.68L.58 23.7l6.1-1.6a11.33 11.33 0 0 0 5.37 1.37h.01c6.26 0 11.36-5.1 11.37-11.37a11.3 11.3 0 0 0-3.34-8.04Z"/>
+    </symbol>
+  </svg>
+
+  <!-- ========== NAV ========== -->
+  <header class="nav">
+    <div class="contenedor">
+      <a href="#inicio" class="marca"><span aria-hidden="true">🧁</span> Dulce Azul</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#postres">Postres</a>
+        <a href="#como-pedir">Cómo pedir</a>
+        <a href="#opiniones">Opiniones</a>
+      </nav>
+      <a class="btn btn-wa btn-mini" data-wa="Hola Dulce Azul 👋, quiero hacer un pedido." href="https://wa.me/51999999999" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#ico-wa"/></svg> Pedir
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="inicio">
+      <div class="contenedor">
+        <div>
+          <span class="etiqueta">✨ Hechos en casa, cada día</span>
+          <h1>Postres que endulzan tus momentos</h1>
+          <p>Tortas, cheesecakes, alfajores y más, preparados con ingredientes frescos y mucho cariño. Pide por WhatsApp y te lo llevamos.</p>
+          <div class="hero-acciones">
+            <a class="btn btn-wa" data-wa="Hola Dulce Azul 👋, quiero hacer un pedido." href="https://wa.me/51999999999" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="#ico-wa"/></svg> Pedir por WhatsApp
+            </a>
+            <a class="btn btn-sec" href="#postres">Ver postres</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          🎂
+          <div class="burbuja b1">⭐ 4.9 de 5</div>
+          <div class="burbuja b2">🚚 Delivery</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BENEFICIOS ========== -->
+    <section style="padding-top: 24px;">
+      <div class="contenedor beneficios">
+        <div class="beneficio"><div class="ico">🥚</div><h3>Ingredientes frescos</h3><p>Sin conservantes</p></div>
+        <div class="beneficio"><div class="ico">🎨</div><h3>Personalizados</h3><p>Para tu ocasión</p></div>
+        <div class="beneficio"><div class="ico">🚚</div><h3>Delivery</h3><p>A tu puerta</p></div>
+        <div class="beneficio"><div class="ico">💙</div><h3>Hecho a mano</h3><p>Con amor casero</p></div>
+      </div>
+    </section>
+
+    <!-- ========== POSTRES ========== -->
+    <section id="postres" style="padding-top: 16px;">
+      <div class="contenedor">
+        <div class="titulo-sec">
+          <h2>Nuestros postres</h2>
+          <p>Elige tu favorito y pídelo en un toque.</p>
+        </div>
+
+        <div class="grid-postres">
+          <article class="postre">
+            <div class="postre-img" aria-hidden="true">🎂</div>
+            <div class="postre-cuerpo">
+              <h3>Torta de chocolate</h3>
+              <p>Bizcocho húmedo con fudge casero y cobertura de ganache.</p>
+              <div class="postre-pie">
+                <span class="precio">S/ 65 <small>/ entera</small></span>
+                <a class="btn btn-wa btn-mini" data-wa="Hola 👋, quiero pedir una Torta de chocolate." href="https://wa.me/51999999999" target="_blank" rel="noopener">Pedir</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="postre">
+            <div class="postre-img" aria-hidden="true">🍰</div>
+            <div class="postre-cuerpo">
+              <h3>Cheesecake de arándanos</h3>
+              <p>Base crocante, crema suave y salsa de arándanos natural.</p>
+              <div class="postre-pie">
+                <span class="precio">S/ 70 <small>/ entero</small></span>
+                <a class="btn btn-wa btn-mini" data-wa="Hola 👋, quiero pedir un Cheesecake de arándanos." href="https://wa.me/51999999999" target="_blank" rel="noopener">Pedir</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="postre">
+            <div class="postre-img" aria-hidden="true">🍪</div>
+            <div class="postre-cuerpo">
+              <h3>Alfajores de manjar</h3>
+              <p>Suaves, que se deshacen en la boca. Caja de 12 unidades.</p>
+              <div class="postre-pie">
+                <span class="precio">S/ 30 <small>/ caja</small></span>
+                <a class="btn btn-wa btn-mini" data-wa="Hola 👋, quiero pedir una caja de Alfajores de manjar." href="https://wa.me/51999999999" target="_blank" rel="noopener">Pedir</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="postre">
+            <div class="postre-img" aria-hidden="true">🧁</div>
+            <div class="postre-cuerpo">
+              <h3>Cupcakes decorados</h3>
+              <p>Ideales para cumpleaños y eventos. Pack de 6, sabores a elección.</p>
+              <div class="postre-pie">
+                <span class="precio">S/ 36 <small>/ pack</small></span>
+                <a class="btn btn-wa btn-mini" data-wa="Hola 👋, quiero pedir un pack de Cupcakes decorados." href="https://wa.me/51999999999" target="_blank" rel="noopener">Pedir</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="postre">
+            <div class="postre-img" aria-hidden="true">🍮</div>
+            <div class="postre-cuerpo">
+              <h3>Flan de vainilla</h3>
+              <p>Clásico, cremoso y con caramelo dorado en su punto.</p>
+              <div class="postre-pie">
+                <span class="precio">S/ 40 <small>/ entero</small></span>
+                <a class="btn btn-wa btn-mini" data-wa="Hola 👋, quiero pedir un Flan de vainilla." href="https://wa.me/51999999999" target="_blank" rel="noopener">Pedir</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="postre">
+            <div class="postre-img" aria-hidden="true">🍩</div>
+            <div class="postre-cuerpo">
+              <h3>Box sorpresa</h3>
+              <p>Mix de mini postres para regalar o compartir. ¡Siempre éxito!</p>
+              <div class="postre-pie">
+                <span class="precio">S/ 55 <small>/ box</small></span>
+                <a class="btn btn-wa btn-mini" data-wa="Hola 👋, quiero pedir un Box sorpresa." href="https://wa.me/51999999999" target="_blank" rel="noopener">Pedir</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CÓMO PEDIR ========== -->
+    <section id="como-pedir" style="background: var(--blanco);">
+      <div class="contenedor">
+        <div class="titulo-sec">
+          <h2>¿Cómo pedir?</h2>
+          <p>Fácil, rápido y sin complicaciones.</p>
+        </div>
+        <div class="pasos">
+          <div class="paso"><h3>Elige tu postre</h3><p>Revisa el menú o cuéntanos qué tienes en mente.</p></div>
+          <div class="paso"><h3>Escríbenos por WhatsApp</h3><p>Coordinamos fecha, sabor y dirección de entrega.</p></div>
+          <div class="paso"><h3>¡Disfruta!</h3><p>Recibe tu pedido fresco y listo para compartir.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== OPINIONES ========== -->
+    <section id="opiniones">
+      <div class="contenedor">
+        <div class="titulo-sec">
+          <h2>Lo que dicen nuestros clientes</h2>
+        </div>
+        <div class="testimonios">
+          <div class="testimonio">
+            <div class="estrellas" aria-label="5 estrellas">★★★★★</div>
+            <p>“La torta de chocolate fue la estrella del cumpleaños. ¡Súper húmeda!”</p>
+            <strong>— Cliente 1</strong>
+          </div>
+          <div class="testimonio">
+            <div class="estrellas" aria-label="5 estrellas">★★★★★</div>
+            <p>“Pedí por WhatsApp y llegó puntual. El cheesecake, una delicia.”</p>
+            <strong>— Cliente 2</strong>
+          </div>
+          <div class="testimonio">
+            <div class="estrellas" aria-label="5 estrellas">★★★★★</div>
+            <p>“Los alfajores se deshacen en la boca. Ya soy cliente fija.”</p>
+            <strong>— Cliente 3</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA FINAL ========== -->
+    <section style="padding-top: 0;">
+      <div class="contenedor">
+        <div class="cta">
+          <h2>¿Se te antojó algo dulce?</h2>
+          <p>Escríbenos ahora y reserva tu postre. Respondemos rápido 💙</p>
+          <a class="btn btn-wa" data-wa="Hola Dulce Azul 👋, quiero hacer un pedido." href="https://wa.me/51999999999" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#ico-wa"/></svg> Escribir por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <div class="marca"><span aria-hidden="true">🧁</span> Dulce Azul</div>
+      <p>Pedidos con 24 h de anticipación · Lun a Sáb, 9:00 – 19:00</p>
+      <p>Instagram <a href="#">@dulceazul</a></p>
+      <p style="margin-top: 8px;">© <span id="anio">2026</span> Dulce Azul. Hecho con 💙</p>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a class="wa-flotante" data-wa="Hola Dulce Azul 👋, quiero hacer un pedido." href="https://wa.me/51999999999" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <svg aria-hidden="true"><use href="#ico-wa"/></svg>
+  </a>
+
+  <script>
+    // ⚙️ CONFIGURA AQUÍ tu número de WhatsApp:
+    // código de país + número, solo dígitos, sin "+" ni espacios (ej. Perú: 51987654321)
+    const WHATSAPP = "51999999999";
+
+    document.querySelectorAll("[data-wa]").forEach(function (enlace) {
+      enlace.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(enlace.dataset.wa);
+    });
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
